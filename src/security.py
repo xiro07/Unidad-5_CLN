@@ -1,5 +1,6 @@
-from datetime import UTC, datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
+UTC = timezone.utc  # noqa: UP017
 
 def can_cancel(status, owner_id, user_id, is_admin, created_at, now=None):
     now = now or datetime.now(UTC)
