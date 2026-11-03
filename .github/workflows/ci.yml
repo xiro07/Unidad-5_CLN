@@ -20,7 +20,7 @@ jobs:
         pip install -r requirements.txt
         
     - name: Lint with ruff
-      run: python -m ruff check src
+      run: python -m ruff check src pruebas
       
     - name: Test with pytest
-      run: python -m pytest -v --cov=src
+      run: python -m pytest -v --cov=src pruebas
