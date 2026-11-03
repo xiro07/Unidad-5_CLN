@@ -1,7 +1,8 @@
-from datetime import UTC, datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 from src.security import can_cancel
 
+UTC = timezone.utc
 
 def test_owner_within_24h():
     now = datetime.now(UTC)
