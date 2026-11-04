@@ -4,9 +4,9 @@
 **Docente:** Miguel Angel Gomez Marroquin  
 **Equipo:** Equipo 9  
 **Integrantes:**
-- [Ivan Francisco Padron Macias 2150830]
-- [María Ximena Rodarte Cuevas 2154111]
-- [Angel Haziel Bernal Garza 2156444]
+- Ivan Francisco Padron Macias 2150830
+- María Ximena Rodarte Cuevas 2154111
+- Angel Haziel Bernal Garza 2156444
 
 ---
 
