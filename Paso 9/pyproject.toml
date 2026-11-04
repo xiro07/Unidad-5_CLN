@@ -1,0 +1,19 @@
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.coverage.run]
+source = ["src/dominio", "src/aplicacion", "src/infraestructura"]
+
+[tool.ruff]
+line-length = 120
+extend-exclude = ["Unidad 4"]
+
+[tool.ruff.lint]
+select = ["E", "F"]   # errores de sintaxis, imports sin usar y estilo basico
+
+[tool.ruff.lint.per-file-ignores]
+# Codigo y pruebas del equipo escritos antes del lint: se documentan los avisos, no se reescribe nada.
+"src/**" = ["F401", "E501"]
+"tests/test_aplicacion.py" = ["F401", "F403", "F405"]
+"tests/test_dominio.py" = ["E702"]

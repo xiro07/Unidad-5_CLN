@@ -1,0 +1,28 @@
+$ python -m ruff check src tests
+All checks passed!
+
+$ python -m pytest -v
+tests/test_pia_persistencia.py::test_cp14_commit_persiste_la_reserva PASSED [ 62%]
+tests/test_pia_persistencia.py::test_cp15_rollback_descarta_la_reserva PASSED [ 63%]
+tests/test_pia_persistencia.py::test_cp16_error_dentro_de_la_transaccion_hace_rollback_automatico PASSED [ 65%]
+tests/test_pia_persistencia.py::test_cp17_no_se_puede_iniciar_una_segunda_transaccion_activa PASSED [ 67%]
+tests/test_pia_persistencia.py::test_cp18_commit_sin_transaccion_activa_falla PASSED [ 68%]
+tests/test_pia_reglas_dominio.py::test_cp01_cancelar_con_5_dias_no_cobra_penalizacion PASSED [ 70%]
+tests/test_pia_reglas_dominio.py::test_cp02_cancelar_con_menos_de_48h_cobra_primera_noche PASSED [ 72%]
+tests/test_pia_reglas_dominio.py::test_cp03_no_se_puede_cancelar_una_reserva_ya_cancelada PASSED [ 74%]
+tests/test_pia_reglas_dominio.py::test_cp04_exactamente_48h_antes_no_cobra_penalizacion PASSED [ 75%]
+tests/test_pia_reglas_dominio.py::test_cp05_47h59m_antes_si_cobra_penalizacion PASSED [ 77%]
+tests/test_pia_reglas_dominio.py::test_cp06_grupo_de_10_con_deposito_30_se_confirma PASSED [ 79%]
+tests/test_pia_reglas_dominio.py::test_cp07_grupo_de_10_sin_deposito_se_rechaza PASSED [ 81%]
+tests/test_pia_reglas_dominio.py::test_cp08_grupo_de_9_habitaciones_no_exige_deposito PASSED [ 82%]
+tests/test_pia_reglas_dominio.py::test_cp09_deposito_de_299_99_sobre_1000_se_rechaza PASSED [ 84%]
+tests/test_pia_reglas_dominio.py::test_cp10_ajuste_de_30_usd_sin_autorizacion_se_aplica PASSED [ 86%]
+tests/test_pia_reglas_dominio.py::test_cp11_ajuste_de_50_01_usd_sin_autorizacion_se_rechaza PASSED [ 87%]
+tests/test_pia_reglas_dominio.py::test_cp12_ajuste_de_exactamente_50_usd_sin_autorizacion_se_permite PASSED [ 89%]
+tests/test_pia_reglas_dominio.py::test_cp13_ajuste_de_80_usd_con_autorizacion_registra_al_gerente PASSED [ 91%]
+tests/test_pia_servicios_externos.py::test_cp19_mock_aprueba_credenciales_y_se_aplica_el_ajuste PASSED [ 93%]
+tests/test_pia_servicios_externos.py::test_cp20_mock_rechaza_credenciales_y_el_folio_no_cambia PASSED [ 94%]
+tests/test_pia_servicios_externos.py::test_cp21_ajuste_dentro_del_limite_sin_credenciales_no_consulta_al_servicio PASSED [ 96%]
+tests/test_pia_servicios_externos.py::test_cp22_ajuste_mayor_a_50_sin_credenciales_se_rechaza_sin_llamar_al_servicio PASSED [ 98%]
+tests/test_pia_servicios_externos.py::test_cp23_servicio_externo_con_timeout_se_propaga_y_no_se_modifica_el_folio PASSED [100%]
+============================== 58 passed in 0.10s ==============================

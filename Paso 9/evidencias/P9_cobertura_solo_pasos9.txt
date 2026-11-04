@@ -1,0 +1,24 @@
+_______________ coverage: platform linux, python 3.13.18-final-0 _______________
+
+Name                                  Stmts   Miss  Cover
+---------------------------------------------------------
+src/aplicacion/__init__.py                0      0   100%
+src/aplicacion/abstracciones.py          30      1    97%
+src/aplicacion/comandos.py               73      0   100%
+src/aplicacion/dtos.py                   59      0   100%
+src/aplicacion/servicios.py             149     48    68%
+src/dominio/__init__.py                   0      0   100%
+src/dominio/comun.py                     17      0   100%
+src/dominio/entidades.py                241     75    69%
+src/dominio/enumeraciones.py             36      0   100%
+src/dominio/eventos.py                   43      0   100%
+src/dominio/repositorios.py              12      0   100%
+src/dominio/servicios.py                 72     17    76%
+src/dominio/value_objects.py             97     10    90%
+src/infraestructura/__init__.py           0      0   100%
+src/infraestructura/composicion.py       21      0   100%
+src/infraestructura/persistencia.py      87      3    97%
+src/infraestructura/servicios.py         42      8    81%
+---------------------------------------------------------
+TOTAL                                   979    162    83%
+23 passed in 0.20s

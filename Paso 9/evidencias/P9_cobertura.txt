@@ -1,0 +1,28 @@
+..........................................................               [100%]
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.13.18-final-0 _______________
+
+Name                                  Stmts   Miss  Cover   Missing
+-------------------------------------------------------------------
+src/aplicacion/__init__.py                0      0   100%
+src/aplicacion/abstracciones.py          30      0   100%
+src/aplicacion/comandos.py               73      0   100%
+src/aplicacion/dtos.py                   59      0   100%
+src/aplicacion/servicios.py             149      5    97%   66, 77, 105, 161, 200
+src/dominio/__init__.py                   0      0   100%
+src/dominio/comun.py                     17      0   100%
+src/dominio/entidades.py                241     20    92%   20, 32, 34, 50, 78, 102, 130, 132, 136, 157, 165, 198, 214, 257, 265, 276, 286, 288, 328, 332
+src/dominio/enumeraciones.py             36      0   100%
+src/dominio/eventos.py                   43      0   100%
+src/dominio/repositorios.py              12      0   100%
+src/dominio/servicios.py                 72      4    94%   43, 87, 89, 99
+src/dominio/value_objects.py             97      3    97%   52, 118, 144
+src/infraestructura/__init__.py           0      0   100%
+src/infraestructura/composicion.py       21      0   100%
+src/infraestructura/persistencia.py      87      2    98%   70-71
+src/infraestructura/servicios.py         42      3    93%   16, 31, 42
+-------------------------------------------------------------------
+TOTAL                                   979     37    96%
+Coverage HTML written to dir htmlcov
+Required test coverage of 80% reached. Total coverage: 96.22%
+58 passed in 0.32s

@@ -1,0 +1,24 @@
+﻿caso_id,regla,tipo,entrada,resultado_esperado,prueba_pytest,resultado_real
+CP-01,RN-04 Cancelación <48 h cobra primera noche,Éxito,Cancelar con 5 días de anticipación,Sin penalización; estado CANCELADA,test_cp01_cancelar_con_5_dias_no_cobra_penalizacion,PASSED
+CP-02,RN-04 Cancelación <48 h cobra primera noche,Éxito,"Cancelar con 14 h de anticipación; total 200, 2 noches",Penalización 100.00 (primera noche),test_cp02_cancelar_con_menos_de_48h_cobra_primera_noche,PASSED
+CP-03,RN-04 Cancelación <48 h cobra primera noche,Error,Cancelar una reserva ya cancelada,DominioException 'No se puede cancelar',test_cp03_no_se_puede_cancelar_una_reserva_ya_cancelada,PASSED
+CP-04,RN-04 Cancelación <48 h cobra primera noche,Límite,Cancelar exactamente 48 h antes,Sin penalización,test_cp04_exactamente_48h_antes_no_cobra_penalizacion,PASSED
+CP-05,RN-04 Cancelación <48 h cobra primera noche,Límite,Cancelar 47 h 59 min antes,Penalización 100.00,test_cp05_47h59m_antes_si_cobra_penalizacion,PASSED
+CP-06,RN-07 Reserva grupal exige depósito 30 %,Éxito,"10 habitaciones, total 1000, depósito 300",Reserva CONFIRMADA y evento ReservaGrupalConfirmada,test_cp06_grupo_de_10_con_deposito_30_se_confirma,PASSED
+CP-07,RN-07 Reserva grupal exige depósito 30 %,Error,10 habitaciones sin depósito,DominioException (RN-07); la reserva sigue PENDIENTE,test_cp07_grupo_de_10_sin_deposito_se_rechaza,PASSED
+CP-08,RN-07 Reserva grupal exige depósito 30 %,Límite,9 habitaciones sin depósito (no es grupal),Reserva CONFIRMADA,test_cp08_grupo_de_9_habitaciones_no_exige_deposito,PASSED
+CP-09,RN-07 Reserva grupal exige depósito 30 %,Límite,"10 habitaciones, total 1000, depósito 299.99",DominioException (RN-07),test_cp09_deposito_de_299_99_sobre_1000_se_rechaza,PASSED
+CP-10,RN-10 Ajuste > USD 50 exige autorización gerencial,Éxito,Ajuste de -30 USD sin autorización; saldo 200,Saldo 170.00,test_cp10_ajuste_de_30_usd_sin_autorizacion_se_aplica,PASSED
+CP-11,RN-10 Ajuste > USD 50 exige autorización gerencial,Error,Ajuste de -50.01 USD sin autorización,DominioException (RN-10); saldo sigue en 200.00,test_cp11_ajuste_de_50_01_usd_sin_autorizacion_se_rechaza,PASSED
+CP-12,RN-10 Ajuste > USD 50 exige autorización gerencial,Límite,Ajuste de exactamente -50 USD sin autorización,Permitido; saldo 150.00,test_cp12_ajuste_de_exactamente_50_usd_sin_autorizacion_se_permite,PASSED
+CP-13,RN-10 Ajuste > USD 50 exige autorización gerencial,Éxito,Ajuste de -80 USD con autorización del gerente,Saldo 120.00; autorizado_por = gerente,test_cp13_ajuste_de_80_usd_con_autorizacion_registra_al_gerente,PASSED
+CP-14,Persistencia (Unit of Work),Éxito,"begin, save(reserva), commit",La reserva se encuentra en la base,test_cp14_commit_persiste_la_reserva,PASSED
+CP-15,Persistencia (Unit of Work),Error,"begin, save(reserva), rollback",La reserva no existe; la base queda vacía,test_cp15_rollback_descarta_la_reserva,PASSED
+CP-16,Persistencia (Unit of Work),Error,Excepción dentro de transaccion(uow),Rollback automático; base vacía; transacción cerrada,test_cp16_error_dentro_de_la_transaccion_hace_rollback_automatico,PASSED
+CP-17,Persistencia (Unit of Work),Límite,begin dos veces seguidas,RuntimeError 'Ya hay una transaccion activa',test_cp17_no_se_puede_iniciar_una_segunda_transaccion_activa,PASSED
+CP-18,Persistencia (Unit of Work),Error,commit sin begin,RuntimeError 'No hay una transaccion activa',test_cp18_commit_sin_transaccion_activa_falla,PASSED
+CP-19,Servicio externo (mock),Éxito,Mock autoriza al gerente; ajuste -80,"Saldo 120.00; validar llamado 1 vez con (gerente, 1234, ahora)",test_cp19_mock_aprueba_credenciales_y_se_aplica_el_ajuste,PASSED
+CP-20,Servicio externo (mock),Error,Mock lanza AutorizacionInvalidaException,Se propaga la excepción; saldo sigue en 200.00,test_cp20_mock_rechaza_credenciales_y_el_folio_no_cambia,PASSED
+CP-21,Servicio externo (mock),Límite,Ajuste de -50 sin credenciales,Saldo 150.00; el mock no es llamado,test_cp21_ajuste_dentro_del_limite_sin_credenciales_no_consulta_al_servicio,PASSED
+CP-22,Servicio externo (mock),Error,Ajuste de -51 sin credenciales,DominioException (RN-10); el mock no es llamado,test_cp22_ajuste_mayor_a_50_sin_credenciales_se_rechaza_sin_llamar_al_servicio,PASSED
+CP-23,Servicio externo (mock),Error,Mock lanza TimeoutError,Se propaga TimeoutError; el folio no tiene ajustes,test_cp23_servicio_externo_con_timeout_se_propaga_y_no_se_modifica_el_folio,PASSED

@@ -1,0 +1,13 @@
+Demostracion de que las pruebas detectan defectos (se cambia UNA linea de src/dominio/entidades.py y se
+ejecuta: python -m pytest tests/test_pia_reglas_dominio.py). Despues de cada prueba se restauro el archivo.
+
+Mutacion 1 (RN-04): en cancelar(), "horas < 48" cambiado a "horas <= 48"
+  FAILED test_cp04_exactamente_48h_antes_no_cobra_penalizacion      -> 1 failed, 12 passed
+
+Mutacion 2 (RN-07): PORCENTAJE_DEPOSITO_GRUPAL 0.30 cambiado a 0.20
+  FAILED test_cp09_deposito_de_299_99_sobre_1000_se_rechaza          -> 1 failed, 12 passed
+
+Mutacion 3 (RN-10): en aplicar_ajuste(), "abs(monto) > limite" cambiado a ">= limite"
+  FAILED test_cp12_ajuste_de_exactamente_50_usd_sin_autorizacion_se_permite -> 1 failed, 12 passed
+
+Sin mutaciones: 13 passed
